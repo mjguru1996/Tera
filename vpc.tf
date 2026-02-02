@@ -92,7 +92,7 @@ resource "aws_security_group" "sg1" {
 }
 
 resource "aws_instance" "webserver" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = var.ami
   instance_type = "t3.micro"
   subnet_id = aws_subnet.publicsubnet.id
   key_name = "ubuntu"
