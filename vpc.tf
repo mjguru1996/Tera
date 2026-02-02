@@ -22,7 +22,23 @@ resource "aws_internet_gateway" "gw1" {
   vpc_id = aws_vpc.vz.id
 
   tags = {
-    Name = "Internetgateway"
+    Name = "VZInternetgateway"
     Managed_by = "terraform"
+  }
+}
+resource "aws_subnet" "publicsubnet" {
+  vpc_id     = aws_vpc.vz.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "publicsubnet"
+  }
+}
+resource "aws_subnet" "privatesubnet" {
+  vpc_id     = aws_vpc.vz.id
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "privatesubnet"
   }
 }
