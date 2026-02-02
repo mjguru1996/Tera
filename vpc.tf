@@ -118,7 +118,7 @@ output "publicip" {
    value = aws_instance.webserver.id
    
 }
-output "publicip" {
+output "privateip" {
 value = aws_instance.dbserver.id
 }
 
