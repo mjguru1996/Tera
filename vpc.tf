@@ -10,11 +10,19 @@
 # 10. SG 1- 
 # 11. EC2 -Public 
 # 12. Private Subnet
-resource "aws_vpc" "main" {
+resource "aws_vpc" "vz" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
   tags = {
-    Name = "terra-vpc"
+    Name = "verizon-vpc"
+    Managed_by = "terraform"
+  }
+}
+resource "aws_internet_gateway" "gw1" {
+  vpc_id = aws_vpc.vz.id
+
+  tags = {
+    Name = "Internetgateway"
     Managed_by = "terraform"
   }
 }
