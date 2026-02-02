@@ -61,6 +61,15 @@ resource "aws_route_table" "private_route_table" {
     Name = "private_route_table"
   }
 }
+resource "aws_route_table_association" "publicsub_rt_a" {
+  subnet_id      = aws_subnet.publicsubnet.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+resource "aws_route_table_association" "privatesub_rt_a" {
+  subnet_id      = aws_subnet.privatesubnet.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+
 
 # resource "aws_route_table" "private_route_table" {
 #   vpc_id = aws_vpc.example.id
