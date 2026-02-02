@@ -103,22 +103,23 @@ resource "aws_instance" "webserver" {
     Name = "webserver"
   }
 }
+resource "aws_instance" "dbserver" {
+  ami           = var.ami
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.privatesubnet.id
+  key_name = "ubuntu"
+  vpc_security_group_ids = [aws_security_group.sg1.id]
+  
+  tags = {
+    Name = "webserver"
+  }
+}
+output "publicip" {
+   value = aws_instance.webserver.id
+   
+}
+output "publicip" {
+value = aws_instance.dbserver.id
+}
 
 
-# resource "aws_route_table" "private_route_table" {
-#   vpc_id = aws_vpc.example.id
-
-#   route {
-#     cidr_block = "10.0.2.0/24"
-#     gateway_id = aws_internet_gateway.gw1
-#   }
-
-#   route {
-#     ipv6_cidr_block        = "::/0"
-#     egress_only_gateway_id = aws_egress_only_internet_gateway.gw1.id
-#   }
-
-#   tags = {
-#     Name = "public_route_table"
-#   }
-# }
