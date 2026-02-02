@@ -5,3 +5,9 @@ resource "aws_instance" "ubuntu" {
     Name = "terraform-instance"
   }
 }
+output "publicip" {
+  value = aws_instance.ubuntu.public_ip
+}
+output "Instanceid" {
+  value = aws_instance.ubuntu.instance_state
+}
