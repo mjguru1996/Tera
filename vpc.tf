@@ -91,6 +91,19 @@ resource "aws_security_group" "sg1" {
   }
 }
 
+resource "aws_instance" "webserver" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.publicsubnet.id
+  key_name = "ubuntu"
+  associate_public_ip_address = "true"
+  vpc_security_group_ids = [aws_security_group.sg1.id]
+  
+  tags = {
+    Name = "webserver"
+  }
+}
+
 
 # resource "aws_route_table" "private_route_table" {
 #   vpc_id = aws_vpc.example.id
