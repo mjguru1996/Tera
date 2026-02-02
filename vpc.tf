@@ -43,7 +43,7 @@ resource "aws_subnet" "privatesubnet" {
   }
 }
 resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.example.id
+  vpc_id = aws_vpc.vz.id
 
   route {
     cidr_block = "10.0.1.0/24"
@@ -52,7 +52,7 @@ resource "aws_route_table" "public_route_table" {
 
   route {
     ipv6_cidr_block        = "::/0"
-    egress_only_gateway_id = aws_egress_only_internet_gateway.gw1.id
+    # egress_only_gateway_id = aws_egress_only_internet_gateway.gw1.id
   }
 
   tags = {
