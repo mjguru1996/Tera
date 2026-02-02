@@ -18,7 +18,7 @@ resource "aws_vpc" "vz" {
     Managed_by = "terraform"
   }
 }
-resource "aws_internet_gateway" "gw1" {
+resource "aws_internet_gateway" "ig1" {
   vpc_id = aws_vpc.vz.id
 
   tags = {
@@ -47,7 +47,7 @@ resource "aws_route_table" "public_route_table" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.gw1
+    gateway_id =  aws_internet_gateway.ig1.id
   }
 
   tags = {
