@@ -69,6 +69,27 @@ resource "aws_route_table_association" "privatesub_rt_a" {
   subnet_id      = aws_subnet.privatesubnet.id
   route_table_id = aws_route_table.private_route_table.id
 }
+resource "aws_security_group" "sg1" {
+  name        = "sg1"
+  vpc_id      = aws_vpc.vz.id
+
+ ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "sg1"
+  }
+}
 
 
 # resource "aws_route_table" "private_route_table" {
