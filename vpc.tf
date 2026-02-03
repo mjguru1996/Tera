@@ -122,13 +122,13 @@ resource "aws_instance" "dbserver" {
 #     Environment = "Dev"
 #   }
 # }
-terraform {
-  backend "s3" {
-    bucket = "vzdino-tf-state-bucket"
-    key    = "vzdino-tf-state-bucket/terraform.tfstate"
-    region = "ap-south-1"
-  }
-}
+# terraform {
+#   backend "s3" {
+#     bucket = "vzdino-tf-state-bucket"
+#     key    = "vzdino-tf-state-bucket/terraform.tfstate"
+#     region = "ap-south-1"
+#   }
+# }
 output "publicip" {
    value = aws_instance.webserver.id
   
