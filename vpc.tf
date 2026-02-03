@@ -111,7 +111,7 @@ resource "aws_instance" "dbserver" {
   vpc_security_group_ids = [aws_security_group.sg1.id]
   
   tags = {
-    Name = "webserver"
+    Name = "dbserver"
   }
 }
 output "publicip" {
