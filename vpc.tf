@@ -115,7 +115,7 @@ resource "aws_instance" "dbserver" {
   }
 }
 resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-state-bucket"
+  bucket = "vzdino-tf-state-bucket"
 
   tags = {
     Name        = "My bucket"
