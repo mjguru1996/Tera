@@ -114,6 +114,21 @@ resource "aws_instance" "dbserver" {
     Name = "dbserver"
   }
 }
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-state-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+terraform {
+  backend "s3" {
+    bucket = "my-tf-state-bucket"
+    key    = "my-tf-state-bucket/terraform.tfstate"
+    region = "ap-south-1"
+  }
+}
 output "publicip" {
    value = aws_instance.webserver.id
   
