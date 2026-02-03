@@ -114,14 +114,14 @@ resource "aws_instance" "dbserver" {
     Name = "dbserver"
   }
 }
-# resource "aws_s3_bucket" "example" {
-#   bucket = "vzdino-tf-state-bucket"
+resource "aws_s3_bucket" "example" {
+  bucket = "vzdino-tf-state-bucket"
 
-#   tags = {
-#     Name        = "My bucket"
-#     Environment = "Dev"
-#   }
-# }
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
 # terraform {
 #   backend "s3" {
 #     bucket = "vzdino-tf-state-bucket"
