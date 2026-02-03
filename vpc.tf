@@ -114,10 +114,10 @@ resource "aws_instance" "dbserver" {
     Name = "webserver"
   }
 }
-output "public_ip" {
+output "publicip" {
    value = aws_instance.webserver.id
    
 }
-output "public_ip " {
+output "publicip" {
 value = aws_instance.dbserver.id
 }
